@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './assets/App.css';
 import AppTable from './components/AppTable';
 import AppUserAction from './components/AppUserActions';
+import {ACTION_CHK_STATUS} from './utils/constants';
 
 function App() {
   const tableRowsData=[
@@ -13,16 +14,16 @@ function App() {
   ];
 
   tableRowsData.map((row, index) => {
-    return row.selected = true;
+    return row.selected = false;
   })
 
   const [tableRows, setTableRows] = useState(tableRowsData);
   const [selectedCount, setSelectedCount] = useState(0);
-  const [actionChkStatus, setActionChkStatus] = useState(false);
+  const [actionChkStatus, setActionChkStatus] = useState(ACTION_CHK_STATUS.UNCHECKED);
 
 
   const updateActionCheckbox = (checked, row) => {
-    console.log('updateActionCheckbox index='+JSON.stringify(row));
+    
     const selectedRow = tableRows.find((element)=>{ return(element.name === row.name)})
     if(selectedRow){
       selectedRow.selected = checked;
@@ -38,27 +39,53 @@ function App() {
     });
 
     setSelectedCount(selectCnt);
-    console.log('areAllChecked = '+areAllChecked+ '   areSomeChecked='+areSomeChecked);
-    
+
+    let actChkStats = ACTION_CHK_STATUS.UNCHECKED;
+    if(areAllChecked && areSomeChecked){
+      actChkStats = ACTION_CHK_STATUS.CHECKED;
+    }else if(areSomeChecked){
+      actChkStats = ACTION_CHK_STATUS.INTERMIDATE;
+    }
+  
+    setActionChkStatus(actChkStats);
   }
 
-  
+  const updateTableRowsData = (status) => {
+    let selectCnt=0;
+    tableRows.map((row, index) => {
+      return row.selected = status;
+    });
+    if(status){
+      setSelectedCount(tableRows.length);
+    }else{
+      setSelectedCount(0);
+    }
+    setTableRows([...tableRows]);
+  }
 
-
-
-
-
-  useEffect(()=>{
-
-  },[tableRows])
+  const downloadBtnHandler = () => {
+    tableRows.map( row =>{
+      if(row.selected && (row.status==='available')){
+        alert('row.path = '+row.path);
+      }
+    });
+  }
 
   return (
     <div className="App">
       <header className="App-header"><h1>Application Table</h1></header>
       <main className="App-main-container">
         <section className="App-main-container-section">
-          <AppUserAction  selectedCount={selectedCount}/>
-          <AppTable tableRows={tableRows} updateActionCheckbox={updateActionCheckbox}/>
+          <AppUserAction  
+            selectedCount={selectedCount} 
+            actionChkStatus={actionChkStatus} 
+            updateTableRowsData={updateTableRowsData} 
+            downloadBtnHandler={downloadBtnHandler}
+          />
+          <AppTable 
+            tableRows={tableRows} 
+            updateActionCheckbox={updateActionCheckbox}
+          />
         </section>
       </main>
       <footer className="App-footer">Application Footer</footer>

@@ -5,23 +5,29 @@ function TableRow(props) {
     const {name, device, path, status, selected} = props.row;
 
     const [checkBoxSelected, setCheckBoxSelected] = useState(selected);
-    const [rowROClass, setRowROClass] = useState('');
+    const [rowSelectClass, setRowSelectClass] = useState('');
 
     const checkBoxChangeHandler = (event) => {
         setCheckBoxSelected(event.target.checked);
         props.updateActionCheckbox(event.target.checked, props.row);
+        if(event.target.checked){
+            setRowSelectClass('table-row-selected');
+        }else{
+            setRowSelectClass('');
+        }
     }
 
-    const mouseOverHandler = () => {
-        setRowROClass('table-row-mover');
-    }
-
-    const mouseOutHandler = () => {
-        setRowROClass('');
-    }
+    useEffect(()=>{
+        setCheckBoxSelected(selected);
+        if(selected){
+            setRowSelectClass('table-row-selected');
+        }else{
+            setRowSelectClass('');
+        }
+    },[selected]);
 
   return (
-    <tr className={`table-row-container ${rowROClass}`} onMouseOver={mouseOverHandler} onMouseOut={mouseOutHandler}>
+    <tr className={`table-row-container ${rowSelectClass}`} >
       <td><input type="checkbox" checked={checkBoxSelected} onChange={(event) => checkBoxChangeHandler(event)}/></td>
       <td>{name}</td>
       <td>{device}</td>
