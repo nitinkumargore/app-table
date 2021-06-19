@@ -32,7 +32,7 @@ function TableRow(props) {
       <td>{name}</td>
       <td>{device}</td>
       <td>{path}</td>
-      <td/>
+      <td><div className={(status==='available')? 'green-circle': ''}/></td>
       <td>{status}</td>
     </tr>
   );
