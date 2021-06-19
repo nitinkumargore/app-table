@@ -14,7 +14,7 @@ const tableRowsData=[
 ];
 
 tableRowsData.map((row, index) => {
-  return row.selected = false;
+  return row.selected = true;
 })
 
 const [tableRows, setTableRows] = useState(tableRowsData);

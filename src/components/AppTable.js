@@ -1,9 +1,7 @@
 import '../assets/App.css';
-import TableHeader from './TableHeader';
 import TableRow from './TableRow';
 
 function AppTable(props) {
-    console.log('props = '+props);
     const {tableRows} = props;
   return (
     <div className="app-table">
