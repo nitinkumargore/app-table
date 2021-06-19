@@ -2,7 +2,7 @@ import '../assets/App.css';
 import TableRow from './TableRow';
 
 function AppTable(props) {
-    const {tableRows} = props;
+    const {tableRows, updateActionCheckbox} = props;
   return (
     <div className="app-table">
         <table>
@@ -17,7 +17,7 @@ function AppTable(props) {
             </tr>
         </thead>
         <tbody>
-            { tableRows.map((row, index)=>(<TableRow row={row} key={index}/>)) }
+            { tableRows.map((row, index)=>(<TableRow row={row} key={index} updateActionCheckbox={updateActionCheckbox}/>)) }
         </tbody>
         </table>
     </div>
