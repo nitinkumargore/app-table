@@ -33,7 +33,8 @@ function TableRow(props) {
       <td>{device}</td>
       <td>{path}</td>
       <td><div className={(status==='available')? 'green-circle': ''}/></td>
-      <td>{status}</td>
+      <td>{status.charAt(0).toUpperCase() + status.substring(1)}</td>
+
     </tr>
   );
 }
