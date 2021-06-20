@@ -1,0 +1,51 @@
+
+.app-table{
+    padding: 10px;
+  }
+  .app-table table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #dddddd;
+    background-color: white;
+  }
+  
+  .app-table thead tr th {
+    font-weight: 100;
+    font-size: 1rem;
+  }
+  
+  .app-table tbody tr {
+    font-size: 0.8rem;
+  }
+  .app-table td, .app-table th {
+    text-align: left;
+    padding: 8px;
+    border: none;
+  }
+  
+  .app-table tr:nth-child(even) {
+    background-color: #f3f3f3;
+  }
+  
+  .app-table tr{
+    border-bottom: 1px solid lightgray;
+  }
+  
+  .app-table tr:hover{
+    background-color: rgb(233, 233, 233);
+  }
+  
+  
+  .app-table .table-row-selected{
+    background-color: rgb(199, 199, 199) !important;
+  }
+  
+  .app-table .green-circle{
+    border: 1px solid lightgreen;
+    height: 15px;
+    width: 15px;
+    border-radius: 8px;
+    background-color: lightgreen;
+    float: right;
+  }

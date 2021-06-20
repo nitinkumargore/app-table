@@ -1,4 +1,4 @@
-import '../assets/App.css';
+import '../assets/AppTable.css';
 import TableRow from './TableRow';
 
 function AppTable(props) {

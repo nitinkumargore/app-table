@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import '../assets/App.css';
+import '../assets/UserActionHeader.css';
 import {ACTION_CHK_STATUS} from '../utils/constants';
 
 function AppUserAction(props) {
