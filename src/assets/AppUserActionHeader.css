@@ -15,7 +15,7 @@
   
   .app-user-action .selected-cntr{
     padding-left: 0.5rem;
-    min-width: 7rem;
+    min-width: 8rem;
   }
   
   .app-user-action .download-cntr button{
@@ -25,3 +25,9 @@
     cursor: pointer;
   }
   
+  .app-user-action .download-cntr svg{
+    width: 15px;
+    height: 16px;
+    vertical-align: baseline;
+    padding-right: 5px;
+  }

@@ -22,6 +22,7 @@
     text-align: left;
     padding: 8px;
     border: none;
+    overflow-wrap: anywhere;
   }
   
   .app-table tr:nth-child(even) {

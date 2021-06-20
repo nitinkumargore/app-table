@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './assets/App.css';
 import AppTable from './components/AppTable';
 import AppUserAction from './components/AppUserActions';
